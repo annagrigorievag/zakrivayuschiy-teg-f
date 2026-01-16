@@ -1,1 +1,90 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+  /* ---------- ШРИФТЫ ---------- */
+  --font-main: 'Inter', sans-serif;          /* Основной шрифт */
+  --font-accent: 'PressStart2P', fantasy;    /* Акцентный шрифт */
+  
+  /* Веса вариативного шрифта Inter (по макету) */
+  --font-weight-card-text: 400;              /* Основной текст карточек */
+  --font-weight-card-title: 700;             /* Заголовки карточек */
+  
+  /* ---------- ЦВЕТА ---------- */
+  /* Основные цвета */
+  --bg-color: #FFFFFF;                       /* Фон карточек, шапки, модалки */
+  --accent-color: #000000;                   /* Рамки, текст заголовков */
+  --text-color: #000000;                     /* Основной текст */
+  
+  /* Для сердца (используются в SVG) */
+  --heart-contour-color: #000000;            /* Контур сердца (черный) */
+  --heart-fill-color: #FF0000;               /* Заливка при лайке (красный) */
+  
+  /* ---------- ФОН СТРАНИЦЫ ---------- */
+  /* Сложный градиент с фиксированной высотой */
+  --bg-gradient-height: 960px;
+  
+  --bg-gradient: 
+    repeating-linear-gradient(
+      to right,
+      #d3d3d3 0 2px,
+      transparent 2px 4px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      #d3d3d3 0 2px,
+      transparent 2px 4px
+    ),
+    linear-gradient(
+      to bottom,
+      #e7e7e7 0.01%,
+      #1a1a1a
+    );
+  
+  /* ---------- РАЗМЕРЫ ---------- */
+  /* Основной контейнер (резиновый) */
+  --container-width: clamp(375px, calc(100% - 20px), 700px);
+  
+  /* Отступы между карточками */
+  --gap: 50px;
+  
+  /* ---------- ШАПКА ---------- */
+  /* Дискета */
+  --floppy-size: clamp(148px, 9.25rem, 160px);
+  
+  /* Высота шапки (резиновая) */
+  --header-height: clamp(327px, 20.46rem, 368px);
+  
+  /* Отступы шапки */
+  --header-margin-top: clamp(50px, 6.25rem, 100px);
+  --header-margin-bottom: clamp(25px, 5.31rem, 85px);
+  
+  /* Заголовки в шапке */
+  --main-heading-font-size: clamp(49px, 4.1875rem, 65px);
+  --sub-heading-font-size: clamp(14px, 0.875rem, 16px);
+  
+  /* ---------- КНОПКИ ---------- */
+  /* Кнопка "Сохранить" */
+  --save-btn-width: clamp(306px, 19.125rem, 335px);
+  --save-btn-height-desktop: 55px;
+  --save-btn-height-mobile: 84px;
+  
+  /* Кнопка Like */
+  --like-btn-width: 130px;
+  --like-btn-height: 38px;
+  
+  /* ---------- КАРТОЧКИ ---------- */
+  /* Шрифты в карточках */
+  --post-heading-font-size: 18px;
+  --post-text-font-size: 18px;
+  --post-text-font-size-mobile: 16px;
+  
+  /* Отступы в карточках */
+  --post-body-padding: 25px;
+  --post-body-padding-mobile: 15px;
+  
+  /* МОДАЛЬНОЕ ОКНО */
+  --modal-width: 357px;
+  --modal-width-mobile: 300px;
+  
+  /* Иконка в модалке */
+  --modal-icon-size: clamp(21px, 30.46px - 0.66svw, 28px);
+}
