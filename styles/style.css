@@ -32,7 +32,7 @@
   gap: clamp(10px, 2vw, 15px);
 }
 
-/* Иконка дискеты в шапке */
+/* Иконка дискеты*/
 .header-icon {
   fill: var(--accent-color);
   flex-shrink: 0;
@@ -244,7 +244,7 @@
   gap: 30px;
 }
 
-.modal-icon {
+/* .modal-icon {
   inline-size: var(--modal-icon-size);
   block-size: var(--modal-icon-size);
   flex-shrink: 0;
@@ -254,7 +254,7 @@
   z-index: 1;
   color: var(--button-text-color);
   mix-blend-mode: difference;
-}
+} */
 
 .modal-text {
   font-family: var(--font-accent);
@@ -475,11 +475,12 @@
     gap: 20px;
   }
   
-  .modal-icon {
+  /* .modal-icon {
     width: 92px;
     height: 92px;
   }
-  
+   */
+   
   .modal-btn {
     width: 110px;
     height: 34px;

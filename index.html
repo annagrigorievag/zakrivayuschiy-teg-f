@@ -20,9 +20,6 @@
         <!-- ШАПКА -->
         <header class="page-header">
             <div class="header-block">
-                <svg class="header-icon" width="32" height="32" viewBox="0 0 32 32">
-                    <use href="./svg/floppy.svg#floppy" />
-                </svg>
                 <div class="header-text">
                     <h1 class="main-heading">&lt;/HTML&gt;</h1>
                     <p class="sub-heading">ЗАКРЫВАЮЩИЙ ТЕГ</p>
@@ -452,9 +449,9 @@
         <!-- КНОПКА СОХРАНИТЬ -->
         <div class="save-section">
             <button class="save-btn" type="button" onclick="document.getElementById('save-modal').showModal()">
-              <svg width="21" height="21" viewBox="0 0 32 32" style="margin-right: 3.5px;">
-                <use href="./svg/floppy.svg#floppy"/>
-              </svg>
+              <svg class="header-icon" width="32" height="32" viewBox="0 0 32 32">
+                    <use href="./svg/floppy.svg#floppy" />
+                </svg>
               <span class="button__text">Сохранить на память</span>
             </button>
         </div>
@@ -462,8 +459,8 @@
         <!-- МОДАЛЬНОЕ ОКНО -->
         <dialog class="modal" id="save-modal">
           <div class="modal-content">
-            <svg class="modal-icon" viewBox="0 0 40 40">
-              <use href="./svg/floppy.svg#floppy"/>
+            <svg class="header-icon" width="32" height="32" viewBox="0 0 32 32">
+                <use href="./svg/floppy.svg#floppy" />
             </svg>
             <p class="modal-text">Вставьте дискету, чтобы продолжить</p>
             <form method="dialog">

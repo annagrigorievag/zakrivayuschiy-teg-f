@@ -86,5 +86,5 @@
   --modal-width-mobile: 300px;
   
   /* Иконка в модалке */
-  --modal-icon-size: clamp(21px, 30.46px - 0.66svw, 28px);
+  /* --modal-icon-size: clamp(21px, 30.46px - 0.66svw, 28px); */
 }
