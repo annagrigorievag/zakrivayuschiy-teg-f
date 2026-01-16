@@ -113,25 +113,21 @@
   right: 25px;
   font-family: var(--font-accent);
   font-size: 14px;
-  color: #fff;
+  color: #000000; /* ЧЕРНЫЙ текст внутри */
   opacity: 0.5;
   mix-blend-mode: hard-light;
   text-transform: uppercase;
-}
-
-/* Поддержка text-stroke для водяного знака */
-@supports((text-stroke: 1px var(--accent-color)) or (-webkit-text-stroke: 1px var(--accent-color))) {
-  .image-watermark {
-    -webkit-text-stroke: 1px var(--accent-color);
-    text-shadow: none;
-  }
-}
-
-/* Фолбэк для водяного знака */
-.image-watermark {
+  
+  /* Белая обводка 1px */
   text-shadow: 
-    1px 0 var(--accent-color),
-    0 -1px var(--accent-color);
+    -1px -1px 0 #fff,  
+    -1px  0   0 #fff,  
+    -1px  1px 0 #fff,  
+     0   -1px 0 #fff,  
+     0    1px 0 #fff,  
+     1px -1px 0 #fff,  
+     1px  0   0 #fff,
+     1px  1px 0 #fff;  
 }
 
 /* Тело поста */
