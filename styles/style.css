@@ -3,7 +3,7 @@
   background-image: var(--bg-gradient);
   background-attachment: fixed;
   min-height: 100vh;
-  background-size: 100% var(--bg-gradient-height);
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
@@ -12,7 +12,7 @@
   width: var(--container-width);
   max-width: 700px;
   min-height: clamp(327px, calc(327px + 43 * (100vw - 375px) / 325), 368px);
-  margin: clamp(50px, 100px, 100px) auto clamp(25px, 85px, 85px);
+  margin: clamp(50px, 90px, 90px) auto clamp(25px, 95px, 95px);
   border: 2px solid var(--accent-color);
   background-color: var(--bg-color);
   display: flex;
@@ -84,9 +84,7 @@
   margin: 0;
   padding: 4px 10px;
   text-align: left;
-  min-height: 30px;
-  display: flex;
-  align-items: center;
+  display: block;
   box-sizing: border-box;
 }
 
@@ -130,6 +128,13 @@
      1px  1px 0 #fff;  
 }
 
+@supports ((-webkit-text-stroke: 1px #fff) or (text-stroke: 1px #fff)) {
+  .image-watermark {
+    -webkit-text-stroke: 1px #fff;
+    text-shadow: none;
+  }
+}
+
 /* Тело поста */
 .post-body {
   padding: 25px;
@@ -143,14 +148,7 @@
   font-family: var(--font-main);
   font-variation-settings: 'wght' var(--font-weight-card-text);
   font-size: 18px;
-  line-height: 1.5;
-  margin: 0;
-}
-
-/* Персональный текст */
-.personal-text {
-  font-style: italic;
-  color: #333;
+  line-height: 21px;
   margin: 0;
 }
 
@@ -158,10 +156,9 @@
 .post-buttons {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 5px;
   justify-content: flex-end;
-  margin: 0 25px 25px 0;
-  padding-top: 10px;
+  align-self: flex-end;
 }
 
 /* Кнопка с иконкой сердца */
@@ -180,6 +177,9 @@
 
 .card__icon-button:focus {
   outline: none;
+}
+
+.card__icon-button:focus-visible {
   border-color: var(--accent-color);
 }
 
@@ -191,7 +191,7 @@
   font-size: 14px;
   line-height: 0.9;
   color: var(--accent-color);
-  background-color: var(--bg-color);
+  /* background-color: transparent; */
   border: 2px solid var(--accent-color);
   padding: 9px 17px;
   cursor: pointer;
@@ -204,17 +204,22 @@
 .like-icon {
   width: 27px;
   height: 24px;
-  transform: scale(0.85);
+  transform: scale(1.5);
   transform-origin: center;
 }
 
-/* Модальное окно */
+/* Модальное окно декстоп*/
 .modal {
-  border: 2px solid var(--accent-color);
+   border: 2px solid var(--accent-color);
   padding: 0;
   background-color: var(--bg-color);
-  max-width: 357px;
-  margin: auto;
+  width: 353px;
+  height: 191px;
+  margin: 0;
+  position: fixed;
+  top: 384.5px;
+  left: 543.5px;
+  transform: none;
 }
 
 .modal::backdrop {
@@ -222,12 +227,15 @@
 }
 
 .modal-content {
-  padding: 30px 40px;
+  padding: 30px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 /* Иконка в модалке */
@@ -256,22 +264,35 @@
   text-transform: uppercase;
   line-height: 150%;
   text-align: center;
+  width: 293px;
+  height: 63px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Дискета в модальном окне десктоп */
+#save-modal .header-icon {
+  width: 39px;
+  height: 39px;
+  fill: var(--accent-color);
 }
 
 .modal-btn {
-  margin: 0 auto;
-  width: 130px;
+  width: 293px;
   height: 38px;
   font-family: var(--font-accent);
   font-size: 14px;
   color: var(--accent-color);
   background-color: var(--bg-color);
   border: 2px solid var(--accent-color);
-  padding: 9px 17px;
+  padding: 9px 17px; 
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px; 
+  margin: 0;
 }
 
 /* Фильтры для изображений */
@@ -311,28 +332,33 @@
 }
 
 .save-btn {
+  width: 335px; 
+  height: 55px; 
   font-family: var(--font-accent);
   font-size: 14px;
   color: var(--accent-color);
-  background-color: var(--bg-color);
-  border: 2px solid var(--accent-color);
-  padding: 15px 20px;
+  /* background-color: var(--bg-color); */
+  /* background-color: transparent; */
+  border: 2px solid var(--accent-color); 
+  padding: 15px 20px; 
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  width: clamp(306px, 100vw, 335px);
-  height: clamp(55px, 1vh, 84px);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
 }
 
 /* Иконка в кнопке сохранить */
 .save-btn svg {
   width: 21px;
   height: 21px;
-  fill: currentColor;
+   fill: var(--bg-color);
   position: relative;
   z-index: 2;
+  mix-blend-mode: difference;
 }
 
 /* Общие стили для кнопок */
@@ -345,7 +371,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent-color);
+  background-color: var(--bg-color);
 }
 
 .card__like-button:focus,
@@ -379,34 +405,28 @@
 
 /* Текст внутри кнопок */
 .button__text {
-  font-size: 14px;
+  font-size: 13px;
   line-height: 0.9;
   position: relative;
   z-index: 2;
-  color: var(--accent-color);
-  transition: color 0.3s ease;
-}
-
-/* Изменение цвета текста при наведении */
-.card__like-button:hover .button__text,
-.save-btn:hover .button__text,
-.modal-btn:hover .button__text {
   color: var(--bg-color);
+  transition: color 0.3s ease;
+  mix-blend-mode: difference;
 }
 
 /* Мобильная версия */
 @media (max-width: 375px) {
   .page-header {
-    margin: 50px auto 25px;
+    margin: 50px auto 102px;
     padding-block: 122px;
   }
   
   .main-heading {
-    font-size: clamp(2rem, 2rem + 2vw, 3rem);
+    font-size: clamp(3rem, 2rem + 2vw, 3rem);
   }
   
   .sub-heading {
-    font-size: clamp(0.7rem, 0.7rem + 0.5vw, 1rem);
+    font-size: clamp(0.9rem, 0.7rem + 0.5vw, 1rem);
   }
   
   .post-text {
@@ -414,29 +434,31 @@
   }
   
   .post-body {
-    padding: 15px;
-    gap: 15px;
+    padding: 25px;
+    gap: 25px;
   }
   
   .post-buttons {
-    gap: 8px;
-    margin: 0 15px 15px 0;
+    gap: 5px;
+    margin: 0;
+    justify-content: flex-end;
   }
   
   .card__like-button {
-    width: 110px;
-    height: 34px;
-    font-size: 12px;
-    padding: 7px 14px;
+    width: 130px;
+    height: 38px;
+    font-size: 14px;
+    padding: 9px 17px;
+    background-color: var(--bg-color); 
   }
   
   .card__icon-button {
-    width: 34px;
-    height: 34px;
+    width: 40px;
+    height: 38px;
   }
   
   .like-icon {
-    transform: scale(0.75);
+    transform: scale(1.5);
   }
   
   .image-watermark {
@@ -446,12 +468,17 @@
   }
   
   .save-btn {
-    padding: 10px 15px;
-    font-size: 12px;
     width: 306px;
-    height: 88px;
+    height: 84px;
+    padding: 15px 20px;
+    font-size: 13px;
     flex-direction: column;
-    gap: 3px;
+    gap: 8px;
+    border: 2px solid var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color);
   }
   
   .save-btn svg {
@@ -460,27 +487,74 @@
   }
   
   .modal {
-    max-width: 300px;
+    border: 2px solid var(--accent-color);
+    padding: 0;
+    background-color: var(--bg-color);
+    width: 341px;
+    height: 191px;
+    margin: 0;
+    position: fixed;
+    top: 236px;
+    left: 17px;
+    transform: none;
+  }
+
+   .modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.75);
   }
   
   .modal-content {
-    padding: 20px;
+    padding: 30px 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+    .modal-text {
+    font-family: var(--font-accent);
+    font-size: 14px;
+    margin: 0;
+    text-transform: uppercase;
+    line-height: 150%;
+    text-align: center;
+    width: 261px;
+    height: 63px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 20px;
   }
   
   .modal-icon {
-    width: 92px;
-    height: 92px;
+    width: 82px;
+    height: 82px;
+    display: block;
   }
   
   .modal-btn {
-    width: 110px;
-    height: 34px;
-    font-size: 12px;
-    padding: 7px 14px;
+    width: 261px;
+    height: 38px;
+    font-family: var(--font-accent);
+    font-size: 14px;
+    color: var(--accent-color);
+    background-color: var(--bg-color);
+    /* background-color: transparent; */
+    border: 2px solid var(--accent-color);
+    padding: 9px 17px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 0;
   }
   
   .posts-container {
-    gap: 25px;
+    gap: var(--gap);
   }
 }
