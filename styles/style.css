@@ -50,7 +50,7 @@
 /* Подзаголовок */
 .sub-heading {
   font-family: var(--font-accent);
-  font-size: clamp(0.8rem, 0.8rem + 1vw, 1.44rem);
+  font-size: clamp(0.875rem, 0.226rem + 2.77vw, 1.4375rem);
   color: var(--accent-color);
   text-transform: uppercase;
   margin: 0;
@@ -183,21 +183,70 @@
   border-color: var(--accent-color);
 }
 
-/* Кнопка Like */
-.card__like-button {
-  width: 130px;
-  height: 38px;
+/* ОБЩИЙ КЛАСС ДЛЯ ВСЕХ КНОПОК (Like, Сохранить, ОК) */
+.button {
+  /* Основные стили */
   font-family: var(--font-accent);
   font-size: 14px;
   line-height: 0.9;
   color: var(--accent-color);
-  /* background-color: transparent; */
+  background-color: var(--bg-color);
   border: 2px solid var(--accent-color);
-  padding: 9px 17px;
-  cursor: pointer;
+    /* Позиционирование и отображение */
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+    /* Для анимации псевдоэлемента */
+  position: relative;
+  overflow: hidden;
+    /* Transition для focus эффекта */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Псевдоэлемент для hover анимации */
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--accent-color);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+  z-index: 1;
+}
+
+.button:hover::before {
+  transform: translateX(0);
+}
+
+/* Текст внутри кнопок */
+.button__text {
+  font-size: 14px;
+  line-height: 0.9;
+  position: relative;
+  z-index: 2;
+  /* color: #FFFFFF;
+  background-color: #FFFFFF;
+  mix-blend-mode: difference; */
+}
+
+/* Иконки внутри кнопок */
+.button svg {
+  position: relative;
+  z-index: 2;
+  color: #FFFFFF; /* белый цвет для иконки */
+  background-color: #FFFFFF; /* белый фон */
+  mix-blend-mode: difference; /* режим смешивания */
+}
+
+/* Кнопка Like */
+.card__like-button {
+  width: 130px;
+  height: 38px;
+  padding: 9px 17px;
 }
 
 /* Иконка сердца */
@@ -210,16 +259,17 @@
 
 /* Модальное окно декстоп*/
 .modal {
-   border: 2px solid var(--accent-color);
+  border: 2px solid var(--accent-color);
   padding: 0;
   background-color: var(--bg-color);
-  width: 353px;
-  height: 191px;
+  width: 353px; /* размер по макету */
+  height: 191px; /* размер по макету */
   margin: 0;
   position: fixed;
-  top: 384.5px;
-  left: 543.5px;
-  transform: none;
+    /* Центрирование вместо фиксированных отступов: */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .modal::backdrop {
@@ -228,23 +278,23 @@
 
 .modal-content {
   padding: 30px;
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 30px;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
 }
 
-/* Иконка в модалке */
-.modal-icon {
-  fill: var(--accent-color);
-  width: 82px;
-  height: 82px;
-  display: block;
-  margin: 0 auto;
+.modal-row {
+  display: flex;
+  flex-direction: row; /* иконка и текст в ряд */
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
 }
 
 /* Заголовок модального окна */
@@ -263,36 +313,28 @@
   margin: 0;
   text-transform: uppercase;
   line-height: 150%;
-  text-align: center;
-  width: 293px;
-  height: 63px; 
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 1;
+  min-width: 0;
+  white-space: normal; /* перенос если не помещается */
 }
 
 /* Дискета в модальном окне десктоп */
 #save-modal .header-icon {
   width: 39px;
   height: 39px;
+  flex-shrink: 0;
+  border: 2px solid red !important; /* чтобы увидеть границы */
   fill: var(--accent-color);
 }
 
 .modal-btn {
   width: 293px;
   height: 38px;
-  font-family: var(--font-accent);
-  font-size: 14px;
-  color: var(--accent-color);
-  background-color: var(--bg-color);
-  border: 2px solid var(--accent-color);
-  padding: 9px 17px; 
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px; 
-  margin: 0;
+  padding: 9px 17px;
+  gap: 10px;
 }
 
 /* Фильтры для изображений */
@@ -333,85 +375,15 @@
 
 .save-btn {
   width: 335px; 
-  height: 55px; 
-  font-family: var(--font-accent);
-  font-size: 14px;
-  color: var(--accent-color);
-  /* background-color: var(--bg-color); */
-  /* background-color: transparent; */
-  border: 2px solid var(--accent-color); 
-  padding: 15px 20px; 
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 55px;
+  padding: 15px 20px;
   gap: 8px;
-  position: relative;
-  overflow: hidden;
-  transition: box-shadow 0.3s ease;
 }
 
 /* Иконка в кнопке сохранить */
 .save-btn svg {
   width: 21px;
   height: 21px;
-   fill: var(--bg-color);
-  position: relative;
-  z-index: 2;
-  mix-blend-mode: difference;
-}
-
-/* Общие стили для кнопок */
-.card__like-button,
-.save-btn,
-.modal-btn {
-  position: relative;
-  overflow: hidden;
-  transition: box-shadow 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--bg-color);
-}
-
-.card__like-button:focus,
-.save-btn:focus,
-.modal-btn:focus {
-  outline: none;
-  box-shadow: 2px 2px 0 var(--accent-color);
-}
-
-/* Анимация заполнения кнопки цветом */
-.card__like-button::before,
-.save-btn::before,
-.modal-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--accent-color);
-  transform: translateX(-100%);
-  transition: transform 0.5s ease-in-out;
-  z-index: 1;
-}
-
-.card__like-button:hover::before,
-.save-btn:hover::before,
-.modal-btn:hover::before {
-  transform: translateX(0);
-}
-
-/* Текст внутри кнопок */
-.button__text {
-  font-size: 13px;
-  line-height: 0.9;
-  position: relative;
-  z-index: 2;
-  color: var(--bg-color);
-  transition: color 0.3s ease;
-  mix-blend-mode: difference;
 }
 
 /* Мобильная версия */
@@ -487,16 +459,12 @@
   }
   
   .modal {
-    border: 2px solid var(--accent-color);
-    padding: 0;
-    background-color: var(--bg-color);
-    width: 341px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 34px);
+    max-width: 341px;
     height: 191px;
-    margin: 0;
-    position: fixed;
-    top: 236px;
-    left: 17px;
-    transform: none;
   }
 
    .modal::backdrop {
@@ -521,13 +489,11 @@
     margin: 0;
     text-transform: uppercase;
     line-height: 150%;
-    text-align: center;
-    width: 261px;
-    height: 63px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    flex: 1;
+    min-width: 0;
   }
   
   .modal-icon {

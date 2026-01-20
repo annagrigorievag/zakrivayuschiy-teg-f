@@ -5,10 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Закрывающий тег</title>
         <!-- Стили -->
+        <!-- Глобальные стили -->
         <link rel="stylesheet" href="styles/globals.css" />
+        <!-- Шрифты -->
         <link rel="stylesheet" href="fonts/fonts.css" />
+        <!-- Переменные -->
         <link rel="stylesheet" href="styles/variables.css" />
+        <!-- Основные стили -->
         <link rel="stylesheet" href="styles/style.css" />
+        <!-- Анимации -->
         <link rel="stylesheet" href="styles/animations.css" />
                 <!-- Фавиконки -->
         <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
@@ -456,19 +461,23 @@
         </div>
 
         <!-- МОДАЛЬНОЕ ОКНО -->
-        <dialog class="modal" id="save-modal">
-          <div class="modal-content">
-            <svg class="header-icon" width="32" height="32" viewBox="0 0 32 32">
-                <use href="./svg/floppy.svg#floppy"/>
-            </svg>
-            <p class="modal-text">Вставьте дискету, чтобы продолжить</p>
-            <form method="dialog">
-              <button class="modal-btn button" type="submit">
-                  <span class="button__text">ОК</span>
-              </button>
-            </form>
-          </div>
-        </dialog>
+<dialog class="modal" id="save-modal">
+  <div class="modal-content">
+    <!-- Используем header-icon -->
+    <div class="modal-row">
+  <svg class="header-icon" width="32" height="32" viewBox="0 0 32 32">
+    <use href="./svg/floppy.svg#floppy"/>
+  </svg>
+  <p class="modal-text">Вставьте дискету, чтобы продолжить</p>
+</div>
+    
+    <form method="dialog">
+      <button class="modal-btn button" type="submit">
+        <span class="button__text">ОК</span>
+      </button>
+    </form>
+  </div>
+</dialog>
         <script src="./scripts/like.js"></script>
         <script>
             document.querySelectorAll(".save-btn").forEach((button) => {
