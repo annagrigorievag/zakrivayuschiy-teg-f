@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Закрывающий тег</title>
         <!-- Стили -->
-        <!-- Глобальные стили -->
+        <!-- Глобальные стили в начало -->
         <link rel="stylesheet" href="styles/globals.css" />
         <!-- Шрифты -->
         <link rel="stylesheet" href="fonts/fonts.css" />
@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="styles/style.css" />
         <!-- Анимации -->
         <link rel="stylesheet" href="styles/animations.css" />
-                <!-- Фавиконки -->
+        <!-- Фавиконки -->
         <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
         <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
@@ -77,7 +77,7 @@
                                     />
                                 </svg>
                             </button>
-                            <button class="card__like-button  button" type="button">
+                            <button class="card__like-button button" type="button">
                                 <span class="button__text">Like</span>
                             </button>
                         </div>
@@ -88,7 +88,12 @@
                 <article class="memory-post">
                     <h2 class="post-heading">1 спринт: Я — чистый лист</h2>
                     <div class="image-block">
-                        <img class="post-image vintage-effect" src="images/image2.png" alt="Чистый лист" loading="lazy" />
+                        <img
+                            class="post-image vintage-effect"
+                            src="images/image2.png"
+                            alt="Чистый лист"
+                            loading="lazy"
+                        />
                         <span class="image-watermark">&lt;/HTML&gt;</span>
                     </div>
                     <div class="post-body">
@@ -129,7 +134,7 @@
                                     />
                                 </svg>
                             </button>
-                            <button class="card__like-button  button" type="button">
+                            <button class="card__like-button button" type="button">
                                 <span class="button__text">Like</span>
                             </button>
                         </div>
@@ -181,7 +186,7 @@
                                     />
                                 </svg>
                             </button>
-                            <button class="card__like-button  button" type="button">
+                            <button class="card__like-button button" type="button">
                                 <span class="button__text">Like</span>
                             </button>
                         </div>
@@ -233,7 +238,7 @@
                                     />
                                 </svg>
                             </button>
-                            <button class="card__like-button  button" type="button">
+                            <button class="card__like-button button" type="button">
                                 <span class="button__text">Like</span>
                             </button>
                         </div>
@@ -254,9 +259,7 @@
                             которым можно пожаловаться, если очередной макет просто так не поддался. Осваивать что-то
                             новое легче, когда рядом есть единомышленники, не правда ли?
                         </p>
-                        <p class="post-text">
-                            Спасибо нашей группе в телеграме - без них я бы не справилась...
-                        </p>
+                        <p class="post-text">Спасибо нашей группе в телеграме - без них я бы не справилась...</p>
                         <div class="post-buttons">
                             <button class="card__icon-button" type="button" aria-label="Лайкнуть">
                                 <svg class="like-icon" width="27" height="24" viewBox="0 0 39 36">
@@ -285,7 +288,7 @@
                                     />
                                 </svg>
                             </button>
-                            <button class="card__like-button  button" type="button">
+                            <button class="card__like-button button" type="button">
                                 <span class="button__text">Like</span>
                             </button>
                         </div>
@@ -336,7 +339,7 @@
                                     />
                                 </svg>
                             </button>
-                            <button class="card__like-button  button" type="button">
+                            <button class="card__like-button button" type="button">
                                 <span class="button__text">Like</span>
                             </button>
                         </div>
@@ -388,7 +391,7 @@
                                     />
                                 </svg>
                             </button>
-                            <button class="card__like-button  button" type="button">
+                            <button class="card__like-button button" type="button">
                                 <span class="button__text">Like</span>
                             </button>
                         </div>
@@ -441,7 +444,7 @@
                                     />
                                 </svg>
                             </button>
-                            <button class="card__like-button  button" type="button">
+                            <button class="card__like-button button" type="button">
                                 <span class="button__text">Like</span>
                             </button>
                         </div>
@@ -453,31 +456,31 @@
         <!-- КНОПКА СОХРАНИТЬ -->
         <div class="save-section">
             <button class="save-btn button" type="button" onclick="document.getElementById('save-modal').showModal()">
-              <svg class="header-icon" width="32" height="32" viewBox="0 0 32 32">
+                <svg class="header-icon" width="32" height="32" viewBox="0 0 32 32">
                     <use href="./svg/floppy.svg#floppy" />
                 </svg>
-              <span class="button__text">Сохранить на память</span>
+                <span class="button__text">Сохранить на память</span>
             </button>
         </div>
 
         <!-- МОДАЛЬНОЕ ОКНО -->
-<dialog class="modal" id="save-modal">
-  <div class="modal-content">
-    <!-- Используем header-icon -->
-    <div class="modal-row">
-  <svg class="header-icon" width="32" height="32" viewBox="0 0 32 32">
-    <use href="./svg/floppy.svg#floppy"/>
-  </svg>
-  <p class="modal-text">Вставьте дискету, чтобы продолжить</p>
-</div>
-    
-    <form method="dialog">
-      <button class="modal-btn button" type="submit">
-        <span class="button__text">ОК</span>
-      </button>
-    </form>
-  </div>
-</dialog>
+        <dialog class="modal" id="save-modal">
+            <div class="modal-content">
+                <!-- Используем header-icon -->
+                <div class="modal-row">
+                    <svg class="header-icon" width="32" height="32" viewBox="0 0 32 32">
+                        <use href="./svg/floppy.svg#floppy" />
+                    </svg>
+                    <p class="modal-text">Вставьте дискету, чтобы продолжить</p>
+                </div>
+
+                <form method="dialog">
+                    <button class="modal-btn button" type="submit">
+                        <span class="button__text">ОК</span>
+                    </button>
+                </form>
+            </div>
+        </dialog>
         <script src="./scripts/like.js"></script>
         <script>
             document.querySelectorAll(".save-btn").forEach((button) => {
