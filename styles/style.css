@@ -238,6 +238,7 @@
   line-height: 0.9;
   position: relative;
   z-index: 2;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* При наведении меняем цвет текста на белый */
@@ -249,9 +250,17 @@
 .button svg {
   position: relative;
   z-index: 2;
-  color: #FFFFFF; /* белый цвет для иконки */
-  background-color: #FFFFFF; /* белый фон */
-  mix-blend-mode: difference; /* режим смешивания */
+  /* color: #FFFFFF; /* белый цвет для иконки */
+  /* background-color: #FFFFFF; /* белый фон */
+  /* mix-blend-mode: difference; режим смешивания  */
+  /* НОВОЕ */
+  transition: fill 0.3s ease-in-out 0.3s;
+  fill: var(--accent-color);
+}
+/* НОВОЕ */
+/* При наведении меняем цвет иконки на белый */
+.button:hover svg {
+  fill: var(--bg-color);
 }
 
 /* Кнопка Like */
@@ -386,14 +395,12 @@
   fill: var(--accent-color);
   position: relative;
   z-index: 2;
-  /* mix-blend-mode: difference; */
+  mix-blend-mode: normal;
+  transition: fill 0.3s ease-in-out 0.3s;
 }
 
-.save-btn .header-icon {
-    width: 21px;
-    height: 21px;
-    fill: var(--accent-color);
-    mix-blend-mode: normal;
+.save-btn:hover svg {
+  fill: var(--bg-color);
 }
 
 /* Мобильная версия */
@@ -423,6 +430,11 @@
   .save-btn .header-icon {
     width: 28px;
     height: 28px;
+    mix-blend-mode: normal;
+  }
+
+   .save-btn svg{
+    mix-blend-mode: normal;
   }
 
   /* Для запрета переноса в мобилке кнопки Сохранить */
