@@ -246,7 +246,11 @@
   position: relative;
   z-index: 2;
   fill: #FFFFFF;
-  mix-blend-mode: difference;
+  /* mix-blend-mode: difference; */
+}
+
+.button:hover .button__icon {
+  fill: #FFFFFF; /* Белая дискета при наведении на кнопку*/
 }
 
 /* Размер для иконки в модальном на декстопе */
