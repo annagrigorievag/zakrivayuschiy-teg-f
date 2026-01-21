@@ -246,7 +246,7 @@
   position: relative;
   z-index: 2;
   color: #FFFFFF;
-  /* mix-blend-mode: difference; */
+  mix-blend-mode: difference;
 }
 
 /* Размер для иконки в модальном на декстопе */
