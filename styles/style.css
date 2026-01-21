@@ -41,7 +41,7 @@
 /* Основной заголовок */
 .main-heading {
   font-family: var(--font-accent);
-  font-size: clamp(3rem, 2.5rem + 2.5vw, 4.3rem);
+  font-size: clamp(3rem, 2.5rem + 2.5vw, 4.0625rem);
   color: var(--accent-color);
   text-transform: uppercase;
   margin: 0 0 20px 0;
@@ -201,7 +201,7 @@
   position: relative;
   overflow: hidden;
     /* Transition для focus эффекта */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
 }
 
 /* Для всех кнопок с классом button */
@@ -210,7 +210,6 @@
 }
 
 .button:focus-visible {
-  border-color: var(--accent-color);
   box-shadow: 2px 2px 0 var(--accent-color);
 }
 
@@ -238,29 +237,31 @@
   line-height: 0.9;
   position: relative;
   z-index: 2;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: #FFFFFF; /* Белый цвет для текста */
+  mix-blend-mode: difference; /* Режим смешивания для контрастного эффекта */
 }
 
-/* При наведении меняем цвет текста на белый */
-.button:hover .button__text {
-  color: var(--bg-color);
-}
-
-/* Иконки внутри кнопок */
-.button svg {
+/* ОДИН селектор для всех иконок внутри кнопок */
+.button__icon {
   position: relative;
   z-index: 2;
-  /* color: #FFFFFF; /* белый цвет для иконки */
-  /* background-color: #FFFFFF; /* белый фон */
-  /* mix-blend-mode: difference; режим смешивания  */
-  /* НОВОЕ */
-  transition: fill 0.3s ease-in-out 0.3s;
+  fill: #FFFFFF;
+  mix-blend-mode: difference;
+}
+
+/* Размер для иконки в модальном на декстопе */
+#save-modal .header-icon {
+  width: 39px;
+  height: 39px;
+  flex-shrink: 0;
   fill: var(--accent-color);
 }
-/* НОВОЕ */
-/* При наведении меняем цвет иконки на белый */
-.button:hover svg {
-  fill: var(--bg-color);
+
+/* Размер для иконки в кнопке сохранить */
+.save-btn .button__icon {
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
 }
 
 /* Кнопка Like */
@@ -332,14 +333,6 @@
   white-space: normal; /* перенос если не помещается */
 }
 
-/* Дискета в модальном окне десктоп */
-#save-modal .header-icon {
-  width: 39px;
-  height: 39px;
-  flex-shrink: 0;
-  fill: var(--accent-color);
-}
-
 .modal-btn {
   width: 293px;
   height: 38px;
@@ -388,21 +381,6 @@
   gap: 8px;
 }
 
-/* Иконка в кнопке сохранить */
-.save-btn svg {
-  width: 21px;
-  height: 21px;
-  fill: var(--accent-color);
-  position: relative;
-  z-index: 2;
-  mix-blend-mode: normal;
-  transition: fill 0.3s ease-in-out 0.3s;
-}
-
-.save-btn:hover svg {
-  fill: var(--bg-color);
-}
-
 /* Мобильная версия */
 @media (max-width: 375px) {
   .page-header {
@@ -427,24 +405,18 @@
   }
 
     /* Размер иконки в save-btn на мобильной */
-  .save-btn .header-icon {
+  .save-btn .button__icon {
     width: 28px;
     height: 28px;
-    mix-blend-mode: normal;
-  }
-
-   .save-btn svg{
-    mix-blend-mode: normal;
   }
 
   /* Для запрета переноса в мобилке кнопки Сохранить */
 .save-btn .button__text {
     white-space: nowrap;
-}
+ }
 
   .modal {
     max-width: 341px;
-    height: 191px;
   }
   
   .modal-content {
@@ -453,9 +425,5 @@
   
   .modal-btn {
     width: 261px;
-  }
-  
-  .posts-container {
-    gap: var(--gap);
   }
 }
